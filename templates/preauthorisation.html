@@ -15,9 +15,6 @@
 <!-- Table for Claims -->
 {% if preauthorisationdata %}
 <h2>Preauthorization - {{name}} ({{memberID}})</h2>
-{% else %}
-<h2>Preauthorization</h2>
-{% endif %}
 <div style="overflow-x:auto;">
     <table>
         <tr>
@@ -44,4 +41,32 @@
         {% endfor %}
     </table>
 </div>
+
+{% else %}
+<h2>Preauthorization</h2>
+<div style="overflow-x:auto;">
+    <table>
+        <tr>
+            <th>A-code</th>
+            <th>A-date</th>
+            <th>Member Number</th>
+            <th>C History</th>
+            <th>P-Type</th>
+            <th>Amount</th>
+            <th>Hsp</th>
+            <th>User</th>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+
+{% endif %}
+
 {% endblock %}
