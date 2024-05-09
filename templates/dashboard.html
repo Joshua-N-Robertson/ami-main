@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block form %}
+        <div class="header-search">
+            <form action="{% url 'dashboard' %}" method="GET"> 
+                {% csrf_token %}
+                <input type="text" name="memberID" placeholder="Enter membership number...">
+                <button>Submit</button>
+            </form>
+        </div>
+{% endblock %}
+
+{% block content %}
+
+<!-- Table for Bio Data -->
+<h2 >Bio Data</h2>
+<hr>
+<table>
+    <tr>
+        <th>Membership Number</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Company</th>
+        <th>Plans</th>
+        <th>Mobile Phone</th>
+    </tr>
+    <tr>
+        <td>{{ maindata.membernumber }}</td>
+        <td>{{maindata.firstname}}</td>
+        <td>{{maindata.lastname}}</td>
+        <td>{{ maindata.employer }}</td>
+        <td>{{ maindata.plans }}</td>
+        {% if maindata.mobilephone %}
+        <td>0{{maindata.mobilephone }}</td>
+        {%else%}
+        <td></td>
+        {%endif%}
+    </tr>
+</table>
+
+{% endblock %}

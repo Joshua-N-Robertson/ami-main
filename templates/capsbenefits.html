@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+
+<!-- Table for Caps Benefits Data -->
+<h2 >Caps Benefits</h2>
+<hr>
+<div style="overflow-x:auto; table-layout: auto; width: auto;">
+<table>
+    <tr>
+        <th>Caps</th>
+        <th>Amount</th>
+        <th>Type</th>
+        <th>Iplan</th>
+        <th>Company</th>
+        <th>S. Date</th>
+        <th>Prem</th>
+        <th>Status</th>
+        <th>Byear</th>
+        <th>Update Comp</th>
+    </tr>
+    {% for capsbenefitsdata in capsbenefitsdata %}
+    <tr>
+        <td>{{ capsbenefitsdata.caps }}</td>
+        <td>{{capsbenefitsdata.amt}}</td>
+        <td>{{capsbenefitsdata.type}}</td>
+        <td>{{ capsbenefitsdata.iplan }}</td>
+        <td>{{ capsbenefitsdata.comp }}</td>
+        <td>{{ capsbenefitsdata.sdate }}</td>
+        <td>{{ capsbenefitsdata.prem }}</td>
+        <td>{{ capsbenefitsdata.status }}</td>
+        <td>{{ capsbenefitsdata.byear }}</td>
+        <td>{{ capsbenefitsdata.updatecomp }}</td>
+    </tr>
+    {% endfor %}
+</table>
+</div>
+
+{% endblock %}
+
+
+{% for inpatientdata in inpatientdata %}
+        <tr>
+            <td>{{ inpatientdata.membernumber}}</td>
+            <td>{{ inpatientdata.plans }}</td>
+            <td>&#8373 {{ inpatientdata.total_claims }}</td>
+            <td>&#8373 {{ inpatientdata.amt }}</td>
+            <td>{{ inpatientdata.per_usage }}</td>
+        </tr>
+        {% endfor %}

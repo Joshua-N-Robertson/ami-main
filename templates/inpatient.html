@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block form %}
+<div class="header-search">
+    <form action="{% url 'inpatient' %}" method="GET"> 
+        {% csrf_token %}
+        <input type="text" name="memberID" placeholder="Enter membership number...">
+        <button>Submit</button>
+    </form>
+</div>
+{% endblock %}
+
+
+{% block content %}
+<!-- Table for Claims -->
+{% if inpatientdata %}
+<h2>Inpatient data - {{name}} ({{memberID}})</h2>
+<hr>
+<div style="overflow-x:auto;">
+    <table>
+        <tr>
+            <th>Member Number</th>
+            <th>Plan</th>
+            <th>Total Claims</th>
+            <th>Amount</th>
+            <th>Per Usage</th>
+        </tr>
+        {% for inpatientdata in inpatientdata %}
+        <tr>
+            <td>{{ inpatientdata.membernumber}}</td>
+            <td>{{ inpatientdata.plans }}</td>
+            <td>&#8373 {{ inpatientdata.total_claims }}</td>
+            <td>&#8373 {{ inpatientdata.amt }}</td>
+            <td>{{ inpatientdata.per_usage }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% else %}
+<h2>Inpatient</h2>
+<hr>
+<table>
+    <tr>
+        <th>Member Number</th>
+        <th>Plan</th>
+        <th>Total Claims</th>
+        <th>Amount</th>
+        <th>Per Usage</td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>   
+{% endif %}
+{% endblock %}

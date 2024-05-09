@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block form %}
+<div class="header-search">
+    <form action="{% url 'outpatient' %}" method="GET"> 
+        {% csrf_token %}
+        <input type="text" name="memberID" placeholder="Enter membership number...">
+        <button>Submit</button>
+    </form>
+</div>
+{% endblock %}
+
+
+{% block content %}
+<!-- Table for Claims -->
+{% if outpatientdata %}
+<h2>Outpatient data - {{name}} ({{memberID}})</h2>
+{% else %}
+<h2>Outpatient</h2>
+<hr>
+{% endif %}
+<div class="table-wrapper">
+    <table>
+        <tr>
+            <th>Member Number</th>
+            <th>Plan</th>
+            <th>Total Claims</th>
+            <th>Amount</th>
+            <th>Percentage Used</th>
+        </tr>
+        {% for outpatientdata in outpatientdata %}
+        <tr>
+            <td>{{ outpatientdata.membernumber}}</td>
+            <td>{{ outpatientdata.plans }}</td>
+            <td>&#8373 {{ outpatientdata.total_claims }}</td>
+            <td>&#8373 {{ outpatientdata.amt }}</td>
+            <td>{{ outpatientdata.per_usage }} &percnt;</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

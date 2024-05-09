@@ -1,0 +1,86 @@
+{% url 'dashboard' as dashboard %}
+{% url 'claims' as claims  %}
+{% url 'inpatient' as inpatient  %}
+{% url 'outpatient' as outpatient  %}
+{% url 'preauthorisation' as preauthorisation  %}
+{% url 'capsbenefits' as capsbenefits  %}
+
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ami</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+
+    <style>
+         body {
+        font-family: "Trirong", serif;
+        font-size: 14px;
+    }
+        .logo {
+            width:80px; /* Set the width of the logo */
+            height: auto; /* Automatically adjust the height to maintain aspect ratio */
+            margin: 10px;
+            border-radius: 5%;
+        }
+        .content {
+          background-image: url('{% static "img/contentbg.jpg" %}');
+          background-size: cover;
+          background-position: center;
+      }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="header-logo">
+            <img src="{% static 'img/logo.jpeg' %}" class="logo img-fluid img-thumbnail mx-auto d-block" alt="logo"> 
+        </div>
+        {% block form %}
+        
+        {% endblock %}
+
+        <a href="{% url 'logout' %}" style="text-decoration: none; color: #fff;"><i>Logout</i></a>
+    </header>
+
+    <div class="container">
+
+        <div class="sidebar">
+            <div class="nav-item"><a class="nav-item nav-link {% if request.path == dashboard %} active{% endif %}" href="{% url 'dashboard' %}">Bio Data</a></div>
+            <div class="nav-item"><a class="nav-item nav-link {% if request.path == claims %} active{% endif %}" href="{% url 'claims' %}">Claims</a></div>
+            <div class="nav-item"><a class="nav-item nav-link {% if request.path == inpatient %} active{% endif %}" href="{% url 'inpatient' %}">Inpatient</a></div>
+            <div class="nav-item"><a class="nav-item nav-link {% if request.path == outpatient %} active{% endif %}" href="{% url 'outpatient' %}">Outpatient</a></div>
+            <div class="nav-item"><a class="nav-item nav-link {% if request.path == preauthorisation %} active{% endif %}" href="{% url 'preauthorisation' %}">Pre-Authorisation</a></div>
+            <div class="nav-item"><a class="nav-item nav-link {% if request.path == capsbenefits %} active{% endif %}" href="{% url 'capsbenefits' %}" href="{% url 'preauthorisation' %}">Caps Benefits</a></div>
+        </div>
+
+        <div class="content">
+            
+            {% if messages %}
+            <div class="messages">
+                {% for message in messages %}
+                <div class="alert">
+                    {{ message }}
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            <!-- Insert tables -->
+            
+            {% block content %}
+            
+            {% endblock content %}
+
+    </body>
+        </div>
+    </div>
+</body>
+</html>
+
+
+
+<!-- event.preventDefault(); -->

@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block form %}
+<div class="header-search">
+    <form action="{% url 'claims' %}" method="GET"> 
+        {% csrf_token %}
+        <input type="text" name="memberID" placeholder="Enter membership number..." required>
+        <button>Submit</button>
+    </form>
+</div>
+{% endblock %}
+
+{% block content %}
+<!-- Table for Claims -->
+{% if page_obj %}
+    <h2>Claims - {{ name }} ({{ memberID }})</h2>
+    <hr>
+    <div style="overflow-x:auto;">
+        <table>
+            <tr>
+                <th>System Claim Number</th>
+                <th>Description</th>
+                <th>Type</th>
+                <th>Amount</th>
+                <th>Rejected</th>
+                <th>Reason</th>
+            </tr>
+            {% for claim in page_obj %}
+            <tr>
+                <td>{{ claim.systemclaimno }}</td>
+                <td>{{ claim.description }}</td>
+                <td>{{ claim.type }}</td>
+                <td>&#8373; {{ claim.amt }}</td>
+                <td>{{ claim.rejected }}</td>
+                <td>{{ claim.reason }}</td>
+            </tr>
+            
+            {% endfor %}
+        </table>
+    </div>
+
+    <!-- Pagination -->
+    {% if page_obj.has_other_pages %}
+    <div class="pagination">
+        <div>
+            {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}{% if memberID %}&memberID={{ memberID }}{% endif %}" class="pagination-link">&laquo; Previous</a>
+            {% endif %}
+            <span class="current">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+            </span>
+            {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}{% if memberID %}&memberID={{ memberID }}{% endif %}" class="pagination-link">Next &raquo;</a>
+            {% endif %}
+        </div>
+    </div>
+    {% endif %}
+{% else %}
+    <h2>Claims</h2>
+    <hr>
+    <table>
+        <tr>
+            <th>System Claim Number</th>
+            <th>Description</th>
+            <th>Type</th>
+            <th>Amount</th>
+            <th>Rejected</th>
+            <th>Reason</th>
+        </tr>
+        <tr>
+            <td></td><td></td><td></td><td></td><td></td><td></td>
+        </tr>
+    </table>
+{% endif %}
+{% endblock %}

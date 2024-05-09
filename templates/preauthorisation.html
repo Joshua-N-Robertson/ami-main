@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block form %}
+<div class="header-search">
+    <form action="{% url 'preauthorisation' %}" method="GET"> 
+        {% csrf_token %}
+        <input type="text" name="memberID" placeholder="Enter membership number...">
+        <button>Submit</button>
+    </form>
+</div>
+{% endblock %}
+
+
+{% block content %}
+<!-- Table for Claims -->
+{% if preauthorisationdata %}
+<h2>Preauthorisation data - {{name}} ({{memberID}})</h2>
+{% else %}
+<h2>Preauthorisation</h2>
+{% endif %}
+<div style="overflow-x:auto;">
+    <table>
+        <tr>
+            <th>A-code</th>
+            <th>A-date</th>
+            <th>Member Number</th>
+            <th>C History</th>
+            <th>P-Type</th>
+            <th>Amount</th>
+            <th>Hsp</th>
+            <th>User</th>
+        </tr>
+        {% for preauthorisationdata in preauthorisationdata %}
+        <tr>
+            <td>{{ preauthorisationdata.acode}}</td>
+            <td>{{ preauthorisationdata.adate }}</td>
+            <td>{{ preauthorisationdata.membernumber }}</td>
+            <td>{{ preauthorisationdata.chistory }}</td>
+            <td>{{ preauthorisationdata.ptype }}</td>
+            <td>&#8373 {{ preauthorisationdata.amt }}</td>
+            <td>{{ preauthorisationdata.hsp }}</td>
+            <td>{{ preauthorisationdata.auser }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}
