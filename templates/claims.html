@@ -15,7 +15,7 @@
 {% if page_obj %}
     <h2>Claims - {{ name }} ({{ memberID }})</h2>
     <hr>
-    <div style="overflow-x:auto;">
+    <div class="table-wrapper">
         <table>
             <tr>
                 <th>System Claim Number</th>
@@ -34,7 +34,6 @@
                 <td>{{ claim.rejected }}</td>
                 <td>{{ claim.reason }}</td>
             </tr>
-            
             {% endfor %}
         </table>
     </div>
@@ -58,18 +57,20 @@
 {% else %}
     <h2>Claims</h2>
     <hr>
-    <table>
-        <tr>
-            <th>System Claim Number</th>
-            <th>Description</th>
-            <th>Type</th>
-            <th>Amount</th>
-            <th>Rejected</th>
-            <th>Reason</th>
-        </tr>
-        <tr>
-            <td></td><td></td><td></td><td></td><td></td><td></td>
-        </tr>
-    </table>
+    <div class="table-wrapper">
+        <table>
+            <tr>
+                <th>System Claim Number</th>
+                <th>Description</th>
+                <th>Type</th>
+                <th>Amount</th>
+                <th>Rejected</th>
+                <th>Reason</th>
+            </tr>
+            <tr>
+                <td></td><td></td><td></td><td></td><td></td><td></td>
+            </tr>
+        </table>
+    </div>
 {% endif %}
 {% endblock %}
