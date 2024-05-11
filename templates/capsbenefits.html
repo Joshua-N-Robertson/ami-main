@@ -29,9 +29,10 @@
             <th>Byear</th>
             <th>Update Comp</th>
         </tr>
+        {% for capsbenefitsdata in capsbenefitsdata %}
         <tr>
             <td>{{ capsbenefitsdata.caps }}</td>
-            <td>{{capsbenefitsdata.amt}}</td>
+            <td>&#8373;{{capsbenefitsdata.amt}}</td>
             <td>{{capsbenefitsdata.type}}</td>
             <td>{{ capsbenefitsdata.iplan }}</td>
             <td>{{ capsbenefitsdata.comp }}</td>
@@ -41,6 +42,7 @@
             <td>{{ capsbenefitsdata.byear }}</td>
             <td>{{ capsbenefitsdata.updatecomp }}</td>
         </tr>
+        {% endfor %}
     </table>
 </div>
 {% endblock %}
