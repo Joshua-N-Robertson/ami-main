@@ -16,16 +16,6 @@
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 
     <style>
-         body {
-        font-family: "Trirong", serif;
-        font-size: 14px;
-    }
-        .logo {
-            width:80px; /* Set the width of the logo */
-            height: auto; /* Automatically adjust the height to maintain aspect ratio */
-            margin: 10px;
-            border-radius: 5%;
-        }
         .content {
           background-image: url('{% static "img/contentbg.jpg" %}');
           background-size: cover;
@@ -54,7 +44,7 @@
             <div class="nav-item"><a class="nav-item nav-link {% if request.path == inpatient %} active{% endif %}" href="{% url 'inpatient' %}">Inpatient</a></div>
             <div class="nav-item"><a class="nav-item nav-link {% if request.path == outpatient %} active{% endif %}" href="{% url 'outpatient' %}">Outpatient</a></div>
             <div class="nav-item"><a class="nav-item nav-link {% if request.path == preauthorisation %} active{% endif %}" href="{% url 'preauthorisation' %}">Preauthorization</a></div>
-            <div class="nav-item"><a class="nav-item nav-link {% if request.path == capsbenefits %} active{% endif %}" href="{% url 'capsbenefits' %}" href="{% url 'preauthorisation' %}">Caps Benefits</a></div>
+            <div class="nav-item"><a class="nav-item nav-link {% if request.path == capsbenefits %} active{% endif %}" href="{% url 'capsbenefits' %}" href="{% url 'preauthorisation' %}">Benefits</a></div>
         </div>
 
         <div class="content">

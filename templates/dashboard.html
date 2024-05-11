@@ -4,7 +4,7 @@
         <div class="header-search">
             <form action="{% url 'dashboard' %}" method="GET"> 
                 {% csrf_token %}
-                <input type="text" name="memberID" placeholder="Enter membership number...">
+                <input type="text" name="memberID" required placeholder="Enter membership number...">
                 <button>Submit</button>
             </form>
         </div>

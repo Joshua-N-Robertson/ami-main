@@ -1,33 +1,29 @@
-/* General styles */
-/* * {
+*, *::before, *::after {
     margin: 0;
     padding: 0;
-} */
-
-*, *::before, *::after {
     box-sizing: border-box;
 }
 body{
     background-color: #f0f0f0;
-}
-.container {    
-    display: flex;
-    align-items: center;
-    gap: 5;
-    flex-direction: row;
+    font-family: "Trirong", serif;
+    font-size: 14px;
 }
 
 /* Header styles */
 header {
     background-color: #1a4b52; 
     color: #fff;
-    padding: 20px;
+    padding: 15px 30px 15px 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.header-logo {
-    font-size: 24px;
+
+.logo {
+    width:60px; /* Set the width of the logo */
+    height: auto; /* Automatically adjust the height to maintain aspect ratio */
+    margin: 5px;
+    border-radius: 5%;
 }
 .header-search {
     display: flex;
@@ -49,10 +45,17 @@ header {
     background-color: #ddd;
 }
 
+/* Container/Parent div styles */
+.container {    
+    display: flex;
+    /* align-items: center; */
+    gap: 5;
+}
+
 /* Sidebar styles */
 .sidebar {
     width: 30%;
-    height: 70vh; 
+    height:fit-content; 
     background-color: #f0f0f0;
     padding: 10px;
 }
@@ -163,7 +166,6 @@ hr{
     .container {
         display: block;
         width: 100vw;
-        /* overflow-x:scroll; Check */
     }
 
     .sidebar {
@@ -176,7 +178,7 @@ hr{
         padding: 0;
         width: 100%;
         scrollbar-width: none;
-        background-color: #333;
+        /* background-color: #333; */
     }
 
     .content {
@@ -184,9 +186,11 @@ hr{
     }
     
     .nav-item a{
-        width: 90px;
+        width: 110px;
     }
 }  
+
+/* ******************************************** */
 
 
 @media only screen and (max-width: 600px) {
@@ -199,7 +203,10 @@ header{
     }
 } 
 
-/* Login styles */
+
+
+
+/* Login page styles */
 .login-body{
     display: flex;
     justify-content: center;

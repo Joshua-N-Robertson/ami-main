@@ -4,7 +4,7 @@
 <div class="header-search">
     <form action="{% url 'preauthorisation' %}" method="GET"> 
         {% csrf_token %}
-        <input type="text" name="memberID" placeholder="Enter membership number...">
+        <input type="text" name="memberID" required placeholder="Enter membership number...">
         <button>Submit</button>
     </form>
 </div>
@@ -15,7 +15,7 @@
 <!-- Table for Claims -->
 {% if preauthorisationdata %}
 <h2>Preauthorization - {{name}} ({{memberID}})</h2>
-<div style="overflow-x:auto;">
+<div class="table-wrapper">
     <table>
         <tr>
             <th>A-code</th>
@@ -44,7 +44,7 @@
 
 {% else %}
 <h2>Preauthorization</h2>
-<div style="overflow-x:auto;">
+<div class="table-wrapper">
     <table>
         <tr>
             <th>A-code</th>
@@ -66,7 +66,7 @@
             <td></td>
             <td></td>
         </tr>
-
+    </table>
 {% endif %}
 
 {% endblock %}

@@ -4,7 +4,7 @@
 <div class="header-search">
     <form action="{% url 'outpatient' %}" method="GET"> 
         {% csrf_token %}
-        <input type="text" name="memberID" placeholder="Enter membership number...">
+        <input type="text" required name="memberID" placeholder="Enter membership number...">
         <button>Submit</button>
     </form>
 </div>

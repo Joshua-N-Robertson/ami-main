@@ -17,20 +17,20 @@ body {
 .login {
   text-align: center;
   margin: auto;
-  margin-top: 10vh;
+  margin-top: 20vh;
   padding: 40px 50px;
   max-width: 300px;
   border-radius: 5px;
   background: #fff;
-  box-shadow: 1px 1px 1px #666;
+  /* box-shadow: 1px 1px 1px #666; */
 }
   .login input {
     width: 100%;
     display: block;
     box-sizing: border-box;
     margin: 10px 0;
-    padding: 14px 12px;
-    font-size: 16px;
+    padding: 10px 8px;
+    font-size: 12px;
     border-radius: 2px; 
     font-family: Raleway, sans-serif;
   }
@@ -49,7 +49,7 @@ body {
 
 .login input[type=submit] {
   border: none;
-  background:#666;
+  background-color: #1a4b52;  
   color: white;
   font-weight: bold;  
   transition: 0.2s;
@@ -57,7 +57,7 @@ body {
 }
 
 .login input[type=submit]:hover {
-  background-color: #1a4b52;   
+  background:#666;
 }
 
   .login h2 {
@@ -137,18 +137,18 @@ body {
         
         
     
-    <form class="login">
+    <form class="login" method="#" action="#">
         <div class="login-header">
           <img class="login-logo" src="{% static 'img/logo.jpeg' %}" class="logo img-fluid img-thumbnail mx-auto d-block" alt="logo">
         </div>
         <!-- <h2>Welcome</h2>
         <p>Please log in</p> -->
-        <input type="text" placeholder="User Name" />
-        <input type="password" placeholder="Password" />
+        <input type="text" placeholder="User Name" required/>
+        <input type="password" placeholder="Password" required/>
         <input type="submit" value="Log In" />
-        <div class="links">
+        <!-- <div class="links">
           <a href="#">Forgot password</a>
-        </div>
+        </div> -->
       </form>
     </div>
 </body>

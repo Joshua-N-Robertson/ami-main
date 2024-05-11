@@ -4,7 +4,7 @@
 <div class="header-search">
     <form action="{% url 'inpatient' %}" method="GET"> 
         {% csrf_token %}
-        <input type="text" name="memberID" placeholder="Enter membership number...">
+        <input type="text" name="memberID" required placeholder="Enter membership number...">
         <button>Submit</button>
     </form>
 </div>
@@ -16,7 +16,7 @@
 {% if inpatientdata %}
 <h2>Inpatient data - {{name}} ({{memberID}})</h2>
 <hr>
-<div style="overflow-x:auto;">
+<div class="table-wrapper">
     <table>
         <tr>
             <th>Member Number</th>
@@ -39,20 +39,23 @@
 {% else %}
 <h2>Inpatient</h2>
 <hr>
-<table>
-    <tr>
-        <th>Member Number</th>
-        <th>Plan</th>
-        <th>Total Claims</th>
-        <th>Amount</th>
-        <th>Per Usage</td>
-    </tr>
-    <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-    </tr>   
+<div class="table-wrapper">
+    <table>
+        <tr>
+            <th>Member Number</th>
+            <th>Plan</th>
+            <th>Total Claims</th>
+            <th>Amount</th>
+            <th>Per Usage</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+</div>
 {% endif %}
 {% endblock %}
