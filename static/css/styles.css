@@ -30,14 +30,19 @@ header {
     align-items: center;
 }
 .header-search input[type="text"] {
+    border: none;
     padding: 8px;
-    margin-right: 8px;
+    /* margin-right: 8px; */
+}
+input:focus {
+    outline:none; 
 }
 .header-search button {
+    float: right;
     padding: 8px 12px;
     background-color: #ccc;
     border: none;
-    border-radius: 5px;
+    /* border-radius: 5px; */
     color: #333;
     cursor: pointer;
 }
@@ -48,7 +53,6 @@ header {
 /* Container/Parent div styles */
 .container {    
     display: flex;
-    /* align-items: center; */
     gap: 5;
 }
 
@@ -79,7 +83,7 @@ header {
 /* Content styles */
 .content {
     width: 70%;
-    min-height: 70vh;
+    min-height: 80vh;
     background-color: #fff;
     padding: 5px;
     /* flex: 1; */
@@ -178,7 +182,6 @@ hr{
         padding: 0;
         width: 100%;
         scrollbar-width: none;
-        /* background-color: #333; */
     }
 
     .content {
@@ -202,7 +205,6 @@ header{
         margin-top: 20px;
     }
 } 
-
 
 
 
@@ -271,3 +273,6 @@ margin: 20px 0 20px 0;
     background-color:gray;
     color: #000;
     }
+
+
+/* type, company, plan */

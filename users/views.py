@@ -8,23 +8,24 @@ from django.shortcuts import render
 from django.core.paginator import Paginator
 
 
-def login_view(request):
-    if request.method == 'POST':
-        form = AuthenticationForm(request, request.POST)
-        if form.is_valid():
-            username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password')
-            user = authenticate(request, username=username, password=password)
-            if user is not None:
-                login(request, user)
-                # Redirect after succesful login
-                return redirect('dashboard/')
-            else:
-                # Return an 'invalid login' error message.
-                return render(request, 'login.html', {'form': form, 'error': 'Invalid login credentials'})
-    else:
-        form = AuthenticationForm()
-    return render(request, 'login.html', {'form': form})
+
+# def login_view(request):
+#     if request.method == 'POST':
+#         form = AuthenticationForm(request, request.POST)
+#         if form.is_valid():
+#             username = form.cleaned_data.get('username')
+#             password = form.cleaned_data.get('password')
+#             user = authenticate(request, username=username, password=password)
+#             if user is not None:
+#                 login(request, user)
+#                 # Redirect after succesful login
+#                 return redirect('dashboard/')
+#             else:
+#                 # Return an 'invalid login' error message.
+#                 return render(request, 'login.html', {'form': form, 'error': 'Invalid login credentials'})
+#     else:
+#         form = AuthenticationForm()
+#     return render(request, 'login.html', {'form': form})
 
 
 # main info view
@@ -42,7 +43,6 @@ def dashboard_view(request):
 
 
 # claims view 
-from django.core.paginator import Paginator
 
 def claims_view(request):
     memberID = None
@@ -120,7 +120,6 @@ def capsbenefits_view(request):
     return render(request, 'capsbenefits.html', {'capsbenefitsdata': capsbenefitsdata})
 
 
-
 # custom 404 view
 def custom_404(request, exception):
     return render(request, '404.html', status=404)
@@ -132,5 +131,25 @@ def logout_view(request):
 
 
 
+
+
+# ***********
+
+
+def login_view(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('dashboard')  # Redirect to home page after successful login
+        else:
+            print("invalid credentials")
+            messages.error(request, "Invalid")
+            # error_message = "Invalid username or password. Please try again."
+            return render(request, 'login.html')
+    else:
+        return render(request, 'login.html')
 
 

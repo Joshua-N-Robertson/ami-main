@@ -32,7 +32,7 @@
         {% for capsbenefitsdata in capsbenefitsdata %}
         <tr>
             <td>{{ capsbenefitsdata.caps }}</td>
-            <td>&#8373;{{capsbenefitsdata.amt}}</td>
+            <td>&#8373;{{ capsbenefitsdata.amt|floatformat:2 }}</td>
             <td>{{capsbenefitsdata.type}}</td>
             <td>{{ capsbenefitsdata.iplan }}</td>
             <td>{{ capsbenefitsdata.comp }}</td>

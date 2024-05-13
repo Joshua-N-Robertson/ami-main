@@ -16,3 +16,5 @@ urlpatterns = [
     path('capsbenefits/', views.capsbenefits_view, name='capsbenefits'),
 ]
 
+
+

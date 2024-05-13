@@ -15,6 +15,7 @@
 <!-- Table for Claims -->
 {% if outpatientdata %}
 <h2>Outpatient data - {{name}} ({{memberID}})</h2>
+<hr>
 {% else %}
 <h2>Outpatient</h2>
 <hr>
@@ -26,7 +27,7 @@
             <th>Plan</th>
             <th>Total Claims</th>
             <th>Amount</th>
-            <th>Percentage Used</th>
+            <th>Percentage Usage</th>
         </tr>
         {% for outpatientdata in outpatientdata %}
         <tr>

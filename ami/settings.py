@@ -132,3 +132,8 @@ STATICFILES_DIRS = [BASE_DIR/'static']
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # USE_THOUSAND_SEPARATOR = True
+
+
+AUTH_USER_MODEL = 'users.UserAccount'
+
+
